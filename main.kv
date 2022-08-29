@@ -1,0 +1,49 @@
+<Button>:
+    font_size: 25
+    size_hint: (0.98, 0.15)
+    background_normal: ''
+    background_down: ''
+    background_color: [98/255, 114/255, 129/255, 1] if self.state == "normal" else [178/255, 159/255, 145/255, 1]
+    color: 86/255, 43/255, 26/255, 1
+    border: (10,10,10,10)
+
+<Container>:
+    lenght: lenght
+    output: output
+
+    FloatLayout:
+        size: root.width, root.height
+
+        Slider:
+            size_hint: (0.79, 0.1)
+            pos_hint: {"x": 0.01, "top": 0.99}
+            id:lenght
+            min: 1
+            max: 15
+            value: 1
+            step: 1
+
+        Label:
+            size_hint: (0.19, 0.1)
+            pos_hint: {"x": 0.8, "top": 0.99}
+            color: 86/255, 43/255, 26/255, 1
+            font_size: 25
+            text: str(lenght.value)
+
+        Button:
+            pos_hint: {"x": 0.01, "top": 0.85}
+            text: "Generate"
+            on_press: root.push_generate()
+
+        TextInput:
+            size_hint: (0.98, 0.52)
+            pos_hint: {"x": 0.01, "top": 0.69}
+            id: output
+            readonly: True
+            foreground_color: 191/255, 189/255, 192/255, 1
+            background_color: 86/255, 43/255, 26/255, 1
+
+        Button:
+            pos_hint: {"x": 0.01, "top": 0.16}
+            text: "Copy"
+            on_press: root.push_copy()
